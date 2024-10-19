@@ -1,16 +1,31 @@
 import express from "express";
 const app = express();
 const port = 3000;
-let mensaje = {};
+let mensaje2 = {};
 
-async function datos(){
-  let texto = await fetch("http://localhost:3300");
-  mensaje = await texto.json();
-}
-datos();
+app.use(express.json());
+
+app.post('/', async function (req, res) {
+  let mensaje = req.body;
+  mensaje.numero += 25;
+  mensaje.numSaltos++;
+
+  const respuesta = await fetch("http://localhost:3300",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(mensaje)
+    }
+  );
+  mensaje2 = await respuesta.json();
+  //No me gusta
+  res.status(200).send("Datos procesados y enviados al servidor final.");
+});
 
 app.get("/", function (req, res) {
-  res.send(mensaje);
+  res.send(mensaje2);
 });
 
 app.listen(port, function () {
