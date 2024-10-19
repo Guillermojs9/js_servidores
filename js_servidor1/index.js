@@ -20,11 +20,7 @@ app.post('/', async function (req, res) {
     }
   );
   mensaje2 = await respuesta.json();
-  //No me gusta
-  res.status(200).send("Datos procesados y enviados al servidor final.");
-});
-
-app.get("/", function (req, res) {
+  console.log(mensaje2);
   res.send(mensaje2);
 });
 

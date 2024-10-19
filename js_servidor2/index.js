@@ -9,11 +9,7 @@ app.post('/', function (req, res) {
   mensaje = req.body;
   mensaje.numero += 20;
   mensaje.numSaltos++;
-  //No me gusta
-  res.status(200).json(mensaje);
-});
-
-app.get("/", function (req, res) {
+  console.log(mensaje.numero);
   res.send(mensaje);
 });
 
