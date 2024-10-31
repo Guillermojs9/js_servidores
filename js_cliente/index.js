@@ -14,7 +14,6 @@ const informacion = {
     etapa: 0,
     numero: [numeroAleatorio],
     sello: [],
-
 };
 const respuesta = await fetch("http://localhost:3000",
     {

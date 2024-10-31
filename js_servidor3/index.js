@@ -17,7 +17,8 @@ app.post('/', function (req, res) {
     if (mensaje.etapa < 2) {
         mensaje.numero.push(numeroAleatorio);
         mensaje.etapa++;
-        mensaje.sello.push("Sellado por servidor " + mensaje.etapa);
+        //mensaje.sello.push("Sellado por servidor " + mensaje.etapa);
+        mensaje.sello.push(new Date().toISOString());
         console.log(mensaje.numero);
     } else {
         mongoose.connection.collection("objetos").insertOne(mensaje)

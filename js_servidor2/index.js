@@ -13,7 +13,8 @@ app.post('/', async function (req, res) {
   if (mensaje.etapa < 2) {
     mensaje.numero.push(numeroAleatorio);
     mensaje.etapa++;
-    mensaje.sello.push("Sellado por servidor " + mensaje.etapa);
+    //mensaje.sello.push("Sellado por servidor " + mensaje.etapa);
+    mensaje.sello.push(new Date().toISOString());
     const respuesta = await fetch("http://localhost:3600",
       {
         method: "POST",
