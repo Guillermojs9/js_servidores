@@ -1,0 +1,15 @@
+{
+  "name": "js_servidor3",
+  "version": "1.0.0",
+  "description": "Tercer servidor que devuelve el objeto si la etapa no es menor que 2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guillermo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

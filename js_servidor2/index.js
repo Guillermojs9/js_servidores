@@ -1,16 +1,30 @@
 import express from "express";
 const app = express();
 const port = 3300;
-let mensaje = {};
+let mensaje2 = {};
 
 app.use(express.json());
 
-app.post('/', function (req, res) {
-  mensaje = req.body;
+app.post('/', async function (req, res) {
+  let mensaje = req.body;
   mensaje.numero += 20;
   mensaje.numSaltos++;
-  console.log(mensaje.numero);
-  res.send(mensaje);
+  const respuesta = await fetch("http://localhost:3600",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(mensaje)
+    }
+  );
+  mensaje2 = await respuesta.json();
+  console.log(mensaje2);
+  res.send(mensaje2);
+});
+
+app.get("/", function (req, res) {
+  res.send(mensaje2);
 });
 
 app.listen(port, function () {
