@@ -6,13 +6,15 @@ async function datos() {
     let texto = await fetch("http://localhost:3000");
     let contenido = await texto.json();
     console.log("El numero final es " + contenido.numero + " y ha pasado por " + 
-        contenido.etapa + " servidores"
+        contenido.etapa + " servidores, " + contenido.sello
     );
 }
 
 const informacion = {
+    etapa: 0,
     numero: [numeroAleatorio],
-    etapa: 0
+    sello: [],
+
 };
 const respuesta = await fetch("http://localhost:3000",
     {

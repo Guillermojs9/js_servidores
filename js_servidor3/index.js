@@ -12,6 +12,7 @@ app.post('/', function (req, res) {
     if (mensaje.etapa < 2) {
         mensaje.numero.push(numeroAleatorio);
         mensaje.etapa++;
+        mensaje.sello.push("Sellado por servidor " + mensaje.etapa);
         console.log(mensaje.numero);
     } else {
         res.send(mensaje);
