@@ -10,20 +10,24 @@ app.use(express.json());
 
 app.post('/', async function (req, res) {
   let mensaje = req.body;
-  mensaje.numero.push(numeroAleatorio);
-  mensaje.numSaltos++;
-  const respuesta = await fetch("http://localhost:3600",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(mensaje)
-    }
-  );
-  mensaje2 = await respuesta.json();
-  console.log(mensaje2);
-  res.send(mensaje2);
+  if (mensaje.etapa < 2) {
+    mensaje.numero.push(numeroAleatorio);
+    mensaje.etapa++;
+    const respuesta = await fetch("http://localhost:3600",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(mensaje)
+      }
+    );
+    mensaje2 = await respuesta.json();
+    console.log(mensaje2);
+    res.send(mensaje2);
+  } else {
+    res.send(mensaje2);
+  }
 });
 
 app.get("/", function (req, res) {
