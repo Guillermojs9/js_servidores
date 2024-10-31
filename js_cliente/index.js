@@ -1,3 +1,7 @@
+let min = 50;
+let max = 100;
+let numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+
 async function datos() {
     let texto = await fetch("http://localhost:3000");
     let contenido = await texto.json();
@@ -7,7 +11,7 @@ async function datos() {
 }
 
 const informacion = {
-    numero: 30,
+    numero: [numeroAleatorio],
     numSaltos: 0
 };
 const respuesta = await fetch("http://localhost:3000",

@@ -1,13 +1,16 @@
 import express from "express";
 const app = express();
 const port = 3000;
+let min = 50;
+let max = 100;
+let numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
 let mensaje2 = {};
 
 app.use(express.json());
 
 app.post('/', async function (req, res) {
   let mensaje = req.body;
-  mensaje.numero += 25;
+  mensaje.numero.push(numeroAleatorio);
   mensaje.numSaltos++;
 
   const respuesta = await fetch("http://localhost:3300",
